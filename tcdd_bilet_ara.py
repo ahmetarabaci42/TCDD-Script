@@ -8,7 +8,6 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
 # Kullanıcıdan bilgi al
-kalkis = input("Kalkış istasyonu: ")
 varis = input("Varış istasyonu: ")
 tarih = input("Tarih (GG.AA.YYYY): ")
 
