@@ -39,6 +39,14 @@ async function runBot(formData, userProfile) {
         // TCDD bilet sayfasına git
         await page.goto('https://ebilet.tcddtasimacilik.gov.tr/', { waitUntil: 'networkidle2' });
 
+        // Duyuru popup'ı varsa kapat
+        try {
+            await page.waitForSelector('.ui-dialog-titlebar-close', { timeout: 3000 });
+            await page.click('.ui-dialog-titlebar-close');
+        } catch (e) {
+            // Popup yoksa hata verme, devam et
+        }
+
         // Kalkış ve varış istasyonlarını doldur
         await page.type('#nereden', formData.nereden, { delay: 100 });
         await page.waitForSelector('ul.ui-autocomplete');
